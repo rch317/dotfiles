@@ -27,6 +27,9 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
 
+### Add some git to our tmux session - kind of pointless if in shell prompt?
+if [[ \$TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config
 # ignoring wildcards
 [[ -e "$HOME/.ssh/config" ]] && complete -o "default" \
