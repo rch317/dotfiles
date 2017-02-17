@@ -28,3 +28,9 @@ alias untar='tar xvf'
 if [[ "${OSTYPE}" = "darwin15" ]]; then
     alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 fi
+
+### added grip for markdown review
+grip() {
+FILE=${1:-README.md}
+docker run -it --rm -p 8080:8080 -v ${PWD}:/data -v ~/.grip:/.grip mbentley/grip --context=username/repo ${FILE} 0.0.0.0:8080
+}
