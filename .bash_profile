@@ -28,7 +28,7 @@ for option in autocd globstar; do
 done
 
 ### Add some git to our tmux session - kind of pointless if in shell prompt?
-if [[ \$TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
+#if [[ \$TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config
 # ignoring wildcards
