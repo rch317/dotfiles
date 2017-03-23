@@ -20,3 +20,33 @@ calc() {
 	fi
 	printf "\n"
 }
+
+# Found this nugget for autocompleting known_hosts at
+# https://gist.github.com/aliang/1024466
+_complete_ssh_hosts ()
+{
+        COMPREPLY=()
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+                        cut -f 1 -d ' ' | \
+                        sed -e s/,.*//g | \
+                        grep -v ^# | \
+                        uniq | \
+                        grep -v "\[" ;
+                cat ~/.ssh/config | \
+                        grep "^Host " | \
+                        awk '{print $2}'
+                `
+        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+        return 0
+}
+
+### Render our markdown to save git commit overload.
+grip() {
+  FILE=${1:-README.md}
+  docker run --disable-content-trust \
+  -it --rm -p 8080:8080 \
+  -v ${PWD}:/data -v ~/.grip:/.grip mbentley/grip \
+  --context=username/repo ${FILE} \
+  0.0.0.0:8080
+}
