@@ -37,3 +37,7 @@ done
 	-W "$(grep "^Host" ~/.ssh/config | \
 	grep -v "[?*]" | cut -d " " -f2 | \
 	tr ' ' '\n')" scp sftp ssh
+
+[[ -e "$HOME/.ssh/known_hosts" ]]
+  complete -F _complete_ssh_hosts ssh
+
