@@ -40,13 +40,3 @@ _complete_ssh_hosts ()
         COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
         return 0
 }
-
-### Render our markdown to save git commit overload.
-grip() {
-  FILE=${1:-README.md}
-  docker run --disable-content-trust \
-  -it --rm -p 8080:8080 \
-  -v ${PWD}:/data -v ~/.grip:/.grip mbentley/grip \
-  --context=username/repo ${FILE} \
-  0.0.0.0:8080
-}
