@@ -40,3 +40,41 @@ _complete_ssh_hosts ()
         COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
         return 0
 }
+
+### added grip for markdown review
+grip() {
+FILE=${1:-README.md}
+docker run --disable-content-trust -it --rm -p 8080:8080 -v ${PWD}:/data -v ~/.grip:/.grip mbentley/grip --context=username/repo ${FILE} 0.0.0.0:8080
+}
+
+tflip() {
+  $(grep tflip ~/ascii_moji.txt |cut -d \: -f2 |pbcopy)
+}
+
+shrug() {
+  $(grep shrug ~/ascii_moji.txt|cut -d \: -f2 |pbcopy)
+}
+
+createRole() {
+  ROLE=${1}
+  DIRS="defaults files handlers meta tasks templates vars"
+
+  ### Make sure we have a role name...
+  if [[ -z ${ROLE} ]]; then
+    echo "usage: createRole <ansible-RoleName>"
+    echo "  ex:  createRole myAnsibleRole"
+    exit 1
+  fi
+
+  ### Make sure the role doesn't already exist
+  if [[ -e ${ROLE} ]]; then
+    echo "${ROLE} already exists, aborting..."
+    exit 1
+  fi
+
+  ### ugh - mkdir -p ${ROLE}/{${DIRS}} should work...
+  for myDir in ${DIRS}
+   do
+     mkdir -p ${ROLE}/${myDir}
+   done
+}
