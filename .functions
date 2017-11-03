@@ -57,7 +57,6 @@ shrug() {
 
 createRole() {
   ROLE=${1}
-  DIRS="defaults files handlers meta tasks templates vars"
 
   ### Make sure we have a role name...
   if [[ -z ${ROLE} ]]; then
@@ -72,9 +71,6 @@ createRole() {
     exit 1
   fi
 
-  ### ugh - mkdir -p ${ROLE}/{${DIRS}} should work...
-  for myDir in ${DIRS}
-   do
-     mkdir -p ${ROLE}/${myDir}
-   done
+  mkdir -p ${ROLE}/{defaults,files,handlers,meta,tasks,templates,vars}
 }
+
