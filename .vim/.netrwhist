@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/robert.hough/DevOps/Terraform'
-let g:netrw_dirhist_2='/Users/robert.hough/tf-jenkins/modules/vpc_subnets'
-let g:netrw_dirhist_3='/Users/robert.hough/DevOps/Terraform/dev.us-east-2/modules/network/bastion'
-let g:netrw_dirhist_4='/Users/robert.hough/DevOps/Terraform/dev.us-east-2'
-let g:netrw_dirhist_5='/Users/robert.hough/tmp/ngc_us-east-2/modules/ec2_rch'
