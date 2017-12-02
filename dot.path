@@ -1,0 +1,6 @@
+PATH="/usr/local/sbin:/usr/local/bin"
+PATH="${PATH}:/usr/sbin:/usr/bin:/sbin:/bin"
+PATH="${PATH}:/usr/games:/usr/local/games:/snap/bin"
+PATH="${PATH}:${HOME}/bin"
+
+export PATH

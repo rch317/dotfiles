@@ -1,0 +1,1 @@
+/home/rch/projects/dotfiles/dot.vim
