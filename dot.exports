@@ -33,3 +33,6 @@ export DOCKER_CONTENT_TRUST=1
 
 export ANSIBLE_CONFIG=${HOME}/ansible.cfg
 export ANSIBLE_VAULT_PASSWORD_FILE=${HOME}/.vault_secret
+
+## mac specific
+export HOMEBREW_CASK_OPTS=--appdir=/Applications
