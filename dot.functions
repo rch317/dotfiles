@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# MFA enable our AWS cli
+awsgo() {
+  rm -rf ~/.token_file
+  ~/.aws/mfa.sh $1
+}
+
 # Simple calculator
 calc() {
 	local result=""
@@ -62,13 +68,13 @@ createRole() {
   if [[ -z ${ROLE} ]]; then
     echo "usage: createRole <ansible-RoleName>"
     echo "  ex:  createRole myAnsibleRole"
-    exit 1
+    return 1
   fi
 
   ### Make sure the role doesn't already exist
   if [[ -e ${ROLE} ]]; then
     echo "${ROLE} already exists, aborting..."
-    exit 1
+    return 1
   fi
 
   mkdir -p ${ROLE}/{defaults,files,handlers,meta,tasks,templates,vars}

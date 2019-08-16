@@ -11,6 +11,21 @@ for file in ~/.{bash_prompt,aliases,functions,path,extra,exports,credentials}; d
 done
 unset file
 
+### Delete our aws_token_file if more than 12hrs old.
+find ${HOME}/.vars -type f -name aws_token_file -mmin +3600 -exec rm {} \;
+
+### Load various environment vars
+myVars="${HOME}/.vars"
+for file in $(ls ${myVars}/)
+  do
+    file="${myVars}/${file}"
+
+    if [[ -r "${file}" ]] && [[ -f "${file}" ]]; then
+      source "${file}"
+    fi
+  done
+unset file
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
@@ -41,3 +56,5 @@ if [[ $TMUX ]]; then source ~/.tmux-git/tmux-git.sh; fi
 [[ -e "$HOME/.ssh/known_hosts" ]]
   complete -F _complete_ssh_hosts ssh
 
+[[ -e "/usr/local/bin/aws_completer" ]]
+  complete -C '/usr/local/bin/aws_completer' aws

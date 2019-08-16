@@ -36,3 +36,6 @@ export ANSIBLE_VAULT_PASSWORD_FILE=${HOME}/.vault_secret
 
 ## mac specific
 export HOMEBREW_CASK_OPTS=--appdir=/Applications
+
+### Google Creds
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/rch/.google_credentials"
